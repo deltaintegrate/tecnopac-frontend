@@ -1,0 +1,18 @@
+
+.showTable {
+  background-color: #FFFFFF ;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0.5rem;
+}
+
+.itemsCol {
+  padding: 0.5rem;
+}
+
+.itemsRow {
+  padding: 0.5rem;
+}

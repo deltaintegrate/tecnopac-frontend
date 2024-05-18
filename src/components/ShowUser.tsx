@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FaPencilAlt, FaEye } from "react-icons/fa";
+import { CiTrash } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Loader from "./common/Loader";
 
 import '../style/ShowUser.css'
@@ -17,7 +18,7 @@ const ShowUser = () => {
     console.log("id : -", id);
     setIsLoading(true);
     try {
-      const response = await fetch(showUserApi.concat("/") + id, {
+      const response = await fetch(showUserApi.concat("?") + id, {
         method: "DELETE",
       });
       if (!response.ok) {
@@ -73,22 +74,19 @@ const ShowUser = () => {
                   <td className="itemsRow">{item.name}</td>
                   <td className="itemsRow">{item.role.name}</td>
                   <td className="itemsRow">{item.status['name']}</td>
-                  <td className="itemsRow">{item.socialProfiles.map((letdata) =>{ return letdata.url})}</td>
+                  <td className="itemsRow">{item.socialProfiles.map((letdata) =>{ return letdata.name})}</td>
                   <td className="itemsRow">{item.promote_status == true ? "true" : "false" }</td>
                   <td className="itemsRow">{item.rating}</td>
                   <td className="itemsRow">{item.login_at}</td>
-                  <td>
+                  <td className="optionsRow">
                     <Link to={`/edit-user/${item.id}`}>
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
+                      <FaPencilAlt  aria-hidden="true" />
                     </Link>
                     <Link to={`/user/${item.id}`}>
+                      <FaEye aria-hidden="true" />
                     </Link>
-
-                    <i
-                      className="fa fa-trash-o"
-                      aria-hidden="true"
-                      onClick={() => handelDelete(item.id)}
-                    ></i>
+                      <CiTrash aria-hidden="true"
+                      onClick={() => handelDelete(item.id)} />
                   </td>
                 </tr>
               );

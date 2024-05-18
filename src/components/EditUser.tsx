@@ -98,7 +98,7 @@ const EditUser = () => {
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-72"
             id="rating"
             name="rating"
             value={user.rating}
